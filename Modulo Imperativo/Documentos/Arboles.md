@@ -5,6 +5,7 @@ Indice
 
    * [Declaracion](Declaracion)
    * [Cargar](#Cargar)
+   * [Imprimir](#imprimir)
 
 
 Declaracion
@@ -37,3 +38,53 @@ begin
             Cargar(a^.hd, d);
 end;
 ```
+
+Imprimir
+===========
+<table>
+<tr>
+<td> En Orden </td> <td> Pos Orden </td><td> Pre Orden </td>
+</tr>
+<tr>
+<td>
+
+```pascal
+procedure EnOrden(a: arbol);
+begin 
+    if (a <> nil) then begin
+        EnOrden(a^.hi);
+        writeln(a^.dato);
+        EnOrden(a^.hd);
+    end;
+end;
+```
+</td>
+<td>
+
+```pascal
+Procedure PreOrden (a: arbol);
+begin 
+    if (a <> nil) then begin
+        writeln (a^.dato);   
+        PreOrden(a^.hi);
+        PreOrden(a^.hd);
+    end;
+end;
+```
+</td>
+ <td>
+  
+```pascal
+Procedure PosOrden (a: arbol);
+begin 
+    if (a <> nil) then begin
+        PreOrden (a^.hi);
+        PreOrden (a^.hd);
+        writeln (a^.dato);
+    end;
+end;
+```
+</td>
+</tr>
+ 
+</table>
