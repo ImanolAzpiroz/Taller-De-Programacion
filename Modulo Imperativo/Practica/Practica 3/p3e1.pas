@@ -14,8 +14,10 @@ ii. Informe los datos del socio con el número de socio más chico. Debe invocar
 módulo recursivo que retorne dicho socio. 
 
 iii. Informe el número de socio con mayor edad. Debe invocar a un módulo recursivo que 
-retorne dic;ho valor. 
+retorne dicho valor. 
+
 iv. Aumente en 1 la edad de todos los socios. 
+
 v. Lea un valor entero e informe si existe o no existe un socio con ese valor. Debe invocar a 
 un módulo recursivo que reciba el valor leído y retorne verdadero o falso. 
 vi. Lea un nombre e informe si existe o no existe un socio con ese nombre. Debe invocar a 
@@ -112,12 +114,40 @@ end;
 
 
 
+{iii. Informe el número de socio con mayor edad. Debe invocar a un módulo recursivo que 
+retorne dicho valor. }
+procedure BuscarSocMayorEdad(a: arbol; var mayEdad, SocMayEdad: integer);
+begin
+    if(a <> nil) then begin
+        if(a^.dato.edad > mayEdad) then begin
+            mayEdad:= a^.dato.edad;
+            SocMayEdad:= a^.dato.nro;
+        end;
+        BuscarSocMayorEdad(a^.hi, mayEdad, SocMayEdad);
+        BuscarSocMayorEdad(a^.hd, mayEdad, SocMayEdad);
+    end;
+end;
+
+
+{iv. Aumente en 1 la edad de todos los socios. }
+procedure AumentarEdad(a: arbol);
+begin
+    if(a <> nil) then begin
+        a^.dato.edad:= a^.dato.edad + 1;
+        AumentarEdad(a^.hi);
+        AumentarEdad(a^.hd);
+    end;
+end;
+
+
 // Programa principal.      
 // Get-Content input-p3e1.txt | .\p3e1.exe
 var
     a: arbol; 
     nroSocMax: integer;
     minSocio: arbol;
+
+    mayEdad, SocMayEdad: integer;
 begin
     CargarArbol(a);
 
@@ -127,6 +157,12 @@ begin
     // II)
     MenorSocio(a, minSocio);
     writeln('Los datos del socio con nro menor son: ');
-    writeln(minSocio^.dato.nro);
+    writeln('Nro: ', minSocio^.dato.nro);
+    writeln('Nombre: ', minSocio^.dato.nombre);
+    writeln('Edad: ', minSocio^.dato.edad);
 
+    // III)
+    mayEdad:= -1;
+    BuscarSocMayorEdad(a, mayEdad, SocMayEdad);
+    writeln('El nro de socio con mayor edad es ', SocMayEdad, ' con ', mayEdad);
 end.

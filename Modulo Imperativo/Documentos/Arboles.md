@@ -3,7 +3,7 @@
 Indice
 =================
 
-   * [Declaracion](Declaracion)
+   * [Declaracion](#Declaracion)
    * [Cargar](#Cargar)
    * [Imprimir](#imprimir)
 
