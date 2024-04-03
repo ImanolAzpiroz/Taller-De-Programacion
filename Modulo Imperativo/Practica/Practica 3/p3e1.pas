@@ -20,14 +20,20 @@ iv. Aumente en 1 la edad de todos los socios.
 
 v. Lea un valor entero e informe si existe o no existe un socio con ese valor. Debe invocar a 
 un módulo recursivo que reciba el valor leído y retorne verdadero o falso. 
+
 vi. Lea un nombre e informe si existe o no existe un socio con ese nombre. Debe invocar a 
 un módulo recursivo que reciba el nombre leído y retorne verdadero o falso. 
+
 vii. Informe la cantidad de socios. Debe invocar a un módulo recursivo que retorne dicha 
 cantidad. 
+
 viii. Informe el promedio de edad de los socios. Debe invocar al módulo recursivo del 
 inciso vii e invocar a un módulo recursivo que retorne la suma de las edades de los socios. 
+
 xi. Informe los números de socio en orden creciente.  
+
 x. Informe los números de socio pares en orden decreciente. 
+
 }
 
 program p3e1;
@@ -139,15 +145,129 @@ begin
     end;
 end;
 
+{
+    v. Lea un valor entero e informe si existe o no existe un socio con ese valor. Debe invocar a 
+un módulo recursivo que reciba el valor leído y retorne verdadero o falso. 
+}
+
+procedure Buscar(a: arbol; x: integer; var ok: boolean);
+begin
+    if(a = nil) then   
+        ok:= false
+    else
+        if(a^.dato.nro = x) then
+            ok:= true
+        else
+            if(x < a^.dato.nro) then
+                Buscar(a^.hi, x, ok)
+            else
+                Buscar(a^.hd, x, ok);
+end;
+
+
+{
+    vi. Lea un nombre e informe si existe o no existe un socio con ese nombre. Debe invocar a 
+un módulo recursivo que reciba el nombre leído y retorne verdadero o falso. 
+}
+
+procedure BuscarNombre(a: arbol; nombre: string; var ok: boolean);
+begin
+    if(a = nil) then
+        ok:= false
+    else
+        if(a^.dato.nombre = nombre) then
+            ok:= true
+        else begin
+            BuscarNombre(a^.hi, nombre, ok);
+            if(not ok) then
+                BuscarNombre(a^.hd, nombre, ok);
+        end;
+
+end;
+
+
+{
+    vii. Informe la cantidad de socios. Debe invocar a un módulo recursivo que retorne dicha 
+    cantidad. 
+}
+
+procedure ContarSocios(a: arbol; var cant: integer);
+begin
+    if(a <> nil) then begin
+        cant:= cant + 1;
+        ContarSocios(a^.hi, cant);
+        ContarSocios(a^.hd, cant);
+    end;
+end;
+
+{
+    viii. Informe el promedio de edad de los socios. Debe invocar al módulo recursivo del 
+inciso vii e invocar a un módulo recursivo que retorne la suma de las edades de los socios. }
+function CalcularPromedio(a: arbol): integer;
+
+    procedure SumarTotal(a: arbol; var total: integer);
+    begin
+        if(a <> nil) then begin
+            total:= total + a^.dato.edad;
+            SumarTotal(a^.hi, total);
+            SumarTotal(a^.hd, total);
+        end;
+    end;
+
+var
+    cant, total: integer;
+begin
+    cant:= 0; total:= 0;
+    ContarSocios(a, cant);
+    SumarTotal(a, total);
+
+    CalcularPromedio:= total div cant;
+end;
+
+{xi. Informe los números de socio en orden creciente.  }
+procedure ImprimirCreciente(a: arbol);
+begin
+    if(a <> nil) then begin
+        ImprimirCreciente(a^.hi);
+        writeln(a^.dato.nro);
+        ImprimirCreciente(a^.hd);
+    end;
+end;
+
+{
+    x. Informe los números de socio pares en orden decreciente. 
+}
+procedure InformarPares(a: arbol);
+    function esPar(nro: integer): boolean;
+    begin
+        if(nro mod 2 = 0) then
+            esPar:= true
+        else
+            esPar:= false;
+    end;
+
+begin
+    if(a <> nil) then begin
+        InformarPares(a^.hd);
+        if(esPar(a^.dato.nro)) then begin
+            writeln(a^.dato.nro);
+        end;
+        InformarPares(a^.hi);
+    end;
+end;
 
 // Programa principal.      
 // Get-Content input-p3e1.txt | .\p3e1.exe
 var
     a: arbol; 
-    nroSocMax: integer;
     minSocio: arbol;
 
     mayEdad, SocMayEdad: integer;
+
+    x: integer; ok: boolean;
+    nom: string; estaNom: boolean;
+
+    cant:integer;
 begin
     CargarArbol(a);
 
@@ -165,4 +285,36 @@ begin
     mayEdad:= -1;
     BuscarSocMayorEdad(a, mayEdad, SocMayEdad);
     writeln('El nro de socio con mayor edad es ', SocMayEdad, ' con ', mayEdad);
+
+    // IV) VII)
+    AumentarEdad(a);
+    cant:= 0;
+    ContarSocios(a, cant);
+
+    // V)
+    
+    writeln('Ingrese el numero a buscar: ');
+    readln(x); 
+    ok:= false;
+    Buscar(a, x, ok);
+    if(ok)then
+        writeln('El nro de socio se encuentra en el arbol.')
+    else
+        writeln('No se encuentra');
+
+    // VI)
+    writeln('Ingrese el nombre a buscar: ');
+    readln(nom); estaNom:= false;
+    BuscarNombre(a, nom, estaNom);
+    if(estaNom) then
+        writeln('EL nombre se encuentra')
+    else
+        writeln('EL nombre no se encuentra');
+    
+    
+    // VIII)
+    writeln('El promedio de edad de los socios es: ', CalcularPromedio(a));
+    ImprimirCreciente(a);
+
+    InformarPares(a);
 end.
