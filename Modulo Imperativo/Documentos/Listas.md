@@ -5,6 +5,7 @@ Indice
 =================
 
    * [Declaracion](#Declaracion)
+   * [Agregar Adelante](#Agregar Adelante)
    * [Imprimir](#imprimir)
 
 
