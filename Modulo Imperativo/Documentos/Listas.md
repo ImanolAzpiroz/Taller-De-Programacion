@@ -8,6 +8,9 @@ Indice
    * [Agregar Atras](#Agregar_Atras)
    * [Agregar Ordenado](#Agregar_Ordenado)
    * [Imprimir](#imprimir)
+
+   Recursivo
+   * [Imprimir Recursivo](#Imprimir_Rec)
    
 
 Declaracion
@@ -66,6 +69,20 @@ begin
     while(l <> nil) do begin
         writeln(l^.dato);
         l:= l^.sig;
+    end;
+end;
+```
+
+
+<h1 align="center">Recursivo</h1>
+
+Imprimir_Rec
+```pascal
+procedure ImprimirRec(l: lista);
+begin
+    if(l <> nil) then begin
+        writeln(l^.dato);
+        ImprimirRec(l^.sig);
     end;
 end;
 ```
