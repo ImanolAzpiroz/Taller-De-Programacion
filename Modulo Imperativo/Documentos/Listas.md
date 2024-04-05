@@ -8,7 +8,7 @@ Indice
    * [Agregar Atras](#Agregar_Atras)
    * [Agregar Ordenado](#Agregar_Ordenado)
    * [Imprimir](#imprimir)
-   * [Imprimir Recursivo](#imprimir_rec)
+   * [Imprimir Recursivo](#Imprimir_Rec)
    
 
 Declaracion
@@ -68,13 +68,10 @@ begin
         writeln(l^.dato);
         l:= l^.sig;
     end;
-end;
 ```
 
-
-<h2 align="center">Recursivo</h2>
-
 Imprimir_Rec
+===========
 ```pascal
 procedure ImprimirRec(l: lista);
 begin
