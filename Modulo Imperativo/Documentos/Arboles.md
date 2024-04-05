@@ -3,9 +3,10 @@
 Indice
 =================
 
-   * [Declaracion](#Declaracion)
-   * [Cargar](#Cargar)
-   * [Imprimir](#imprimir)
+- [Indice](#indice)
+- [Declaracion](#declaracion)
+- [Cargar](#cargar)
+- [Imprimir](#imprimir)
 
 
 Declaracion
