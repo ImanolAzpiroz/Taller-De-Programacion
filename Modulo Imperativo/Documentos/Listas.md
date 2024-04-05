@@ -70,6 +70,9 @@ begin
     end;
 ```
 
+<h2 align="center"> Recursivo </h2>
+
+
 Imprimir_Rec
 ===========
 ```pascal
