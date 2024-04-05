@@ -3,12 +3,12 @@
 
 Indice
 =================
-
    * [Declaracion](#Declaracion)
    * [Agregar Adelante](#Agregar_Adelante)
    * [Agregar Atras](#Agregar_Atras)
+   * [Agregar Ordenado](#Agregar_Ordenado)
    * [Imprimir](#imprimir)
-
+   
 
 Declaracion
 ===========
@@ -50,7 +50,7 @@ begin
 	ult:= nue;
 end;
 ```
-AgregarOrdenado
+Agregar_Ordenado
 ===========
 ```pascal
 procedure AgregarOrdenado(var l: lista; d: tipoDato);
