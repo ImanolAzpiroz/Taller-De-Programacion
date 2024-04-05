@@ -8,6 +8,8 @@ Indice
    * [Agregar Atras](#Agregar_Atras)
    * [Agregar Ordenado](#Agregar_Ordenado)
    * [Imprimir](#imprimir)
+
+   Recursivo
    * [Imprimir Recursivo](#Imprimir_Rec)
    
 
