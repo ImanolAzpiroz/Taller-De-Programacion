@@ -5,7 +5,8 @@ Indice
 =================
 
    * [Declaracion](#Declaracion)
-   * [Agregar Adelante](#AgregarAdelante)
+   * [Agregar Adelante](#Agregar_Adelante)
+   * [Agregar Atras](#Agregar_Atras)
    * [Imprimir](#imprimir)
 
 
@@ -19,7 +20,7 @@ nodo = record
 end;
 ```
 
-Agregar Adelante
+Agregar_Adelante
 ===========
 ```pascal
 procedure AgregarAdelante(var l: lista; d: tipoDato);
@@ -32,7 +33,7 @@ begin
     l:= nue;
 end;
 ```
-Agregar Atras
+Agregar_Atras
 ===========
 ```pascal
 procedure AgregarAtras(var pri, ult: lista; d: tipoDato);
@@ -49,7 +50,7 @@ begin
 	ult:= nue;
 end;
 ```
-Agregar Ordenado
+AgregarOrdenado
 ===========
 ```pascal
 procedure AgregarOrdenado(var l: lista; d: tipoDato);
