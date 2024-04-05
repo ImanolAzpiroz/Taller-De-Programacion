@@ -3,15 +3,17 @@
 
 Indice
 =================
-   * [Declaracion](#Declaracion)
-   * [Agregar Adelante](#Agregar_Adelante)
-   * [Agregar Atras](#Agregar_Atras)
-   * [Agregar Ordenado](#Agregar_Ordenado)
-   * [Imprimir](#imprimir)
+- [Declaracion](#declaracion)
+- [Agregar Adelante](#agregar_adelante)
+- [Agregar Atras](#agregar_atras)
+- [Agregar Ordenado](#agregar_ordenado)
+- [Imprimir](#imprimir)
+- [Imprimir Rec](#imprimir_rec)
 
-   Recursivo
-   * [Imprimir Recursivo](#Imprimir_Rec)
-   
+
+Recursivo
+* [Imprimir Recursivo](#imprimir_rec)
+
 
 Declaracion
 ===========
@@ -56,8 +58,22 @@ end;
 Agregar_Ordenado
 ===========
 ```pascal
-procedure AgregarOrdenado(var l: lista; d: tipoDato);
-
+Procedure AgregarOrdenado (var l: lista; d: dato);
+var
+    nue,ant,act: lista;
+Begin
+    new(nue);
+    nue^.dato:= d;
+    act:= l;
+    while (act <> Nil) and (dato < act^.dato) do begin
+        ant:= act;
+        act:= act^.sig;
+    end;
+    if (l = act) then
+        l := nue
+    else
+        ant^.sig:= nue;
+    nue^.sig:= act;
 end;
 ```
 
