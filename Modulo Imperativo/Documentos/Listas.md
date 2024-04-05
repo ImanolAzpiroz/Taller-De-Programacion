@@ -74,7 +74,7 @@ end;
 ```
 
 
-<h1 align="center">Recursivo</h1>
+<h2 align="center">Recursivo</h2>
 
 Imprimir_Rec
 ```pascal
