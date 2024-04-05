@@ -8,7 +8,7 @@ Indice
    * [Agregar Atras](#Agregar_Atras)
    * [Agregar Ordenado](#Agregar_Ordenado)
    * [Imprimir](#imprimir)
-   * [Imprimir Recursivo](#Imprimir_Rec)
+   * [Imprimir Recursivo](#imprimir_rec)
    
 
 Declaracion
