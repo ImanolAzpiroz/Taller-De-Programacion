@@ -3,7 +3,7 @@
 ![Screenshot_2](https://github.com/ImanolAzpiroz/Taller-De-Programacion/assets/122705871/b671c86f-976a-41c7-a577-566a79931b56)
 <details><summary>Programa Completo</summary>
 
-[Programa Completo](p19.pas)
+[Programa Completo](/parciales/p19.pas)
 
 </details>
 
