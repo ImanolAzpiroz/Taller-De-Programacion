@@ -1,5 +1,6 @@
 package tema1;
 
+
 //Paso 1: Importar la funcionalidad para lectura de datos
 import PaqueteLectura.Lector;
 import PaqueteLectura.GeneradorAleatorio;
@@ -45,8 +46,8 @@ public class Ej02Jugadores {
         for (i = 0; i < 15; i++)
             if(alturas[i] > promedio)
                 cantSup++;
+
         //Paso 9: Informar la cantidad.
-        
         System.out.println("La cantidad por encima del prom es: " + cantSup);
     }
     
