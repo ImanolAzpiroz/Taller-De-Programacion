@@ -13,7 +13,7 @@ import PaqueteLectura.GeneradorAleatorio;
 */
 
 
-public class Ej02Jugadores {
+public class p2e2 {
 
   
     public static void main(String[] args) {
