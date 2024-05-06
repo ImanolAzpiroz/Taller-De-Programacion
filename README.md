@@ -4,4 +4,5 @@
 - [Modulo Imperativo](./Modulo%20Imperativo/)
     - [Practica](./Modulo%20Imperativo/Practica/)
 - [Modulo Objetos](./Modulo%20Objetos/)
-    - [Practica](./Modulo%20Objetos/Practica/)
+    - [Practica](./Modulo%20Objetos/TP_ProyectoAlumnos/src/)
+    - [Teoria](./Modulo%20Objetos/Teoria/)
