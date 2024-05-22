@@ -1,0 +1,60 @@
+programa template
+procesos
+  proceso juntar(ES cantPapel: numero; ES cantFlores: numero)
+  comenzar
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      cantPapel:= cantPapel + 1
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      cantFlores:= cantFlores + 1
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cantF: numero
+    cantP: numero
+    id: numero
+  comenzar
+    cantF:= 0
+    cantP:= 0
+    RecibirMensaje(id, f)
+    repetir 9
+      juntar(cantP, cantF)
+      mover
+    juntar(cantP, cantF)
+    EnviarMensaje(id,f)
+    EnviarMensaje(cantF, f) 
+  fin
+  robot fiscalizador
+  variables
+    cant1, cant2, id: numero
+  comenzar
+    EnviarMensaje(1, r1)
+    EnviarMensaje(2, r2)
+    repetir 2
+      RecibirMensaje(id, *)
+      si (id = 1)
+        RecibirMensaje(cant1,r1)
+      sino
+        RecibirMensaje(cant2,r2)
+    {---------- Informo la diferencia de flores ---------}
+    si (cant1 > cant2)
+      Informar(cant1 - cant2)
+    sino
+      Informar(cant2 - cant1)
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  f: fiscalizador
+comenzar
+  AsignarArea(r1, ciudad)
+  AsignarArea(r2, ciudad)
+  AsignarArea(f, ciudad)
+  Iniciar(r1,1,1)
+  Iniciar(r2,2,11)
+  Iniciar(f,3,6)
+fin

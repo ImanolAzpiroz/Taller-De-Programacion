@@ -1,0 +1,42 @@
+programa template
+procesos
+  proceso juntarFlores(ES cantFlor: numero)
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      cantFlor:= cantFlor + 1
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    nro: numero
+    esqSin: numero
+    cantFlores: numero
+  comenzar
+    esqSin:= 0
+    cantFlores:= 0
+    repetir 99
+      si HayFlorEnLaEsquina
+        juntarFlores(cantFlores)
+      sino
+        esqSin:= esqSin + 1
+      mover
+    repetir cantFlores
+      depositarFlor
+    Informar('EsquinasSinFlores',esqSin)
+    Informar('CantFloresJuntadas',cantFlores) 
+  fin
+variables
+  r1: tipo1
+  r2: tipo1
+  r3: tipo1
+comenzar
+  AsignarArea(r1, ciudad)
+  AsignarArea(r2, ciudad)
+  AsignarArea(r3, ciudad)
+  Iniciar(r1,1,1)
+  Iniciar(r2,3,1)
+  Iniciar(r3,5,1)
+fin

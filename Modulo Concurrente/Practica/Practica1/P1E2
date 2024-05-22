@@ -1,0 +1,66 @@
+programa template
+procesos
+  proceso juntarPapeles(ES cantPapel: numero)
+  comenzar
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      cantPapel:= cantPapel + 1
+  fin
+  proceso mover20(ES cantPapel: numero)
+  comenzar
+    repetir 20
+      juntarPapeles(cantPapel)
+      mover
+    juntarPapeles(cantPapel)
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot tipo1
+  variables
+    cant: numero
+  comenzar
+    cant:= 0
+    mover20(cant)
+  fin
+  robot tipo2
+  variables
+    cant: numero
+  comenzar
+    cant:= 0
+    derecha
+    mover20(cant)
+  fin
+  robot tipo3
+  variables
+    cant: numero
+  comenzar
+    cant:= 0
+    repetir 2
+      derecha
+    mover20(cant)
+  fin
+  robot tipo4
+  variables
+    cant: numero
+  comenzar
+    cant:= 0
+    repetir 3
+      derecha
+    mover20(cant)
+  fin
+variables
+  r1: tipo1
+  r2: tipo2
+  r3: tipo3
+  r4: tipo4
+comenzar
+  AsignarArea(r1, ciudad)
+  AsignarArea(r2, ciudad)
+  AsignarArea(r3, ciudad)
+  AsignarArea(r4, ciudad)
+  Iniciar(r1,10,10)
+  Iniciar(r2,10,30)
+  Iniciar(r3,30,30)
+  Iniciar(r4,30,10)
+fin
