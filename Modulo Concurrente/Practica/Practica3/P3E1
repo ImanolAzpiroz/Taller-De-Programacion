@@ -1,0 +1,87 @@
+programa template
+procesos
+  proceso juntar(ES cantF: numero; ES cantP: numero)
+  comenzar
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      cantP:= cantP + 1
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      cantF:= cantF + 1
+  fin
+areas
+  areaF: AreaP(1, 1, 5, 10)
+  areaP: AreaP(6,1,10,9)
+  Inicio: AreaC(6,10,10,10)
+robots
+  robot florero
+  variables
+    av, ca, avInit, caInit: numero
+    cantF, cantP: numero
+  comenzar
+    cantF:= 0
+    cantP:= 0
+    avInit:= PosAv
+    caInit:= PosCa
+    repetir 5
+      {------ Calcular La Pos ------}
+      Random(ca,1,10)
+      Random(av,1,4)
+      {------ Juntar si se puede ------}
+      BloquearEsquina(av,ca)
+      Pos(av,ca)
+      juntar(cantF,cantP)
+      Pos(avInit, caInit)
+      LiberarEsquina(av,ca)
+    repetir cantF
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      si HayFlorEnLaBolsa
+        depositarFlor
+      Pos(avInit, caInit)
+      LiberarEsquina(10, 10)
+  fin
+  robot papelero
+  variables
+    ca, av, caInit, avInit: numero
+    cantF cantP: numero
+  comenzar
+    cantF:= 0
+    cantP:= 0
+    avInit:= PosAv
+    caInit:= PosCa
+    repetir 3
+      Random(ca,1,9)
+      Random(av,6, 10)
+      BloquearEsquina(av,ca)
+      Pos(av,ca)
+      juntar(cantF,cantP)
+      Pos(avInit, caInit)
+      LiberarEsquina(av,ca)
+    repetir cantP
+      BloquearEsquina(10,10)
+      Pos(10,10)
+      si HayPapelEnLaBolsa
+        depositarPapel
+      Pos(avInit, caInit)
+      LiberarEsquina(10, 10)
+  fin
+variables
+  r1: florero
+  r2: florero
+  r3: papelero
+  r4: papelero
+comenzar
+  AsignarArea(r1, Inicio)
+  AsignarArea(r2, Inicio)
+  AsignarArea(r3, Inicio)
+  AsignarArea(r4, Inicio)
+  AsignarArea(r1, areaF)
+  AsignarArea(r2, areaF)
+  AsignarArea(r3, areaP)
+  AsignarArea(r4, areaP)
+  Iniciar(r1,6,10)
+  Iniciar(r2,7,10)
+  Iniciar(r3,8,10)
+  Iniciar(r4,9,10)
+fin
